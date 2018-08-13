@@ -1,0 +1,83 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">adres</th>
+        <th scope="col">contactName</th>
+        <th scope="col">contactSurname</th>
+        <th scope="col">contactPhone</th>
+        <th scope="col">secondContactPhone</th>
+        <th scope="col">status</th>
+        <th scope="col">bankLogo</th>
+        <th scope="col">City Name</th>
+        <th scope="col">Town Name</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let bnk of bank;let i = index'>
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{bnk.name}}</td>
+        <td>{{bnk.address}}</td>
+        <td>{{bnk.contactName}}</td>
+        <td>{{bnk.contactSurname}}</td>
+        <td>{{bnk.contactPhone}}</td>
+        <td>{{bnk.secondContactPhone}}</td>
+        <td>{{bnk.status}}</td>
+        <td>{{bnk.bankLogo}}</td>
+        <td>{{bnk?.city?.name}}</td>
+        <td>{{bnk?.town?.name}}</td>
+        
+        <!--
+        <td>{{bnk.town?bnk.town.name:''}}</td>
+        <td>{{bnk?.city?bnk.city.name:''}}</td>-->
+        <!--<td>{{kaf.address !="istanbul" ? kaf.address:'boş'}}</td>--> 
+      </tr>
+    </tbody>
+  </table>
+  <table style="width:500px;">
+      <tr><td>New city</td>
+        <td>
+          <select >
+            <option  *ngFor="let sec of bank" >{{sec?.city?.name}} </option><!--Deneme city -->
+          </select>
+        </td>
+      </tr>
+      <tr><td>New city</td>
+        <td>
+          <select >
+            <option  *ngFor="let sec of bank" >{{sec?.town?.name}}</option><!--Deneme town -->
+          </select>
+        </td>
+      </tr>
+    <tr>
+      <td>New name:</td>
+      <td><input type="text" name="name" [(ngModel)]="name"  ></td>
+    </tr>
+    <tr>
+      <td>New address:</td>
+      <td><input  type="text" name="address" [(ngModel)]="address"></td>
+    </tr>
+    <tr>
+      <td>New contactName:</td>
+      <td><input  type="text" name="contactName" [(ngModel)]="contactName"></td>
+    </tr>
+    <tr>
+      <td>New contactSurname:</td>
+      <td><input  type="text" name="contactSurname" [(ngModel)]="contactSurname"></td>
+    </tr>
+    <tr>
+      <td>New contactPhone:</td>
+      <td><input  type="text" name="contactPhone" [(ngModel)]="contactPhone"  ></td>
+    </tr>
+    <tr>
+      <td>New secondContactPhone:</td>
+      <td><input type="text" name="secondContactPhone" [(ngModel)]="secondContactPhone"></td>
+    </tr>
+    <tr>
+      <button (click)="Create();">add</button>
+    </tr>
+  </table>
+  
