@@ -12,7 +12,7 @@ export class Bank extends Generics {
   contactSurname: string;
   contactPhone: string;
   secondContactPhone: string;
-  bankLogo: any;
+  companyLogo: string;
   town: Town;
   city: City;
 }
@@ -29,8 +29,6 @@ export class BankBranch extends Generics {
   bank: Bank;
   town: Town;
   city: City;
- 
-  
 }
 
 export class BankDetail extends Generics {

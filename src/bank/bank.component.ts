@@ -14,13 +14,13 @@ import { Town } from '../models/town';
 export class BankComponent implements OnInit {
   public defaultCity: City;
   public defaultTown: Town;
-
   public name: string;
   public address: string;
   public contactName: string;
   public contactSurname: string;
   public contactPhone: string;
   public secondContactPhone: string;
+  public bankLogo:string='';
   public city: City;
   public town: Town;
   title = "Bank";
@@ -54,7 +54,22 @@ export class BankComponent implements OnInit {
       console.log(res);
     });
   }
-
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.bankLogo = reader.result;
+    console.log(this.bankLogo)
+  }
   Create() {
     const newPost: Bank = new Bank();
     newPost.name = this.name;
@@ -63,10 +78,14 @@ export class BankComponent implements OnInit {
     newPost.contactSurname = this.contactSurname;
     newPost.contactPhone = this.contactPhone;
     newPost.secondContactPhone = this.secondContactPhone;
+    newPost.companyLogo=this.bankLogo;
     newPost.city=this.defaultCity;
     newPost.town =this.defaultTown;
     this.bankService.CreateUser(newPost).subscribe((resp: Bank) => {
       console.log(resp); this.bank.push(resp);
     });
   }
+  
+
+  
 }

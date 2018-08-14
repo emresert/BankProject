@@ -1,83 +1,99 @@
+<div class="container" style="float: left;">
+  <div class="row">
+    <div class="col md-5 mt-4">
+      <form>
+        <div class="col-md-9 mb-3">
+          <label for="validationServer01">New Name</label>
+          <input type="text" class="form-control is-valid" name="name" [(ngModel)]="name" placeholder="First name" value="Mark" required>
+        </div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">name</th>
-        <th scope="col">adres</th>
-        <th scope="col">contactName</th>
-        <th scope="col">contactSurname</th>
-        <th scope="col">contactPhone</th>
-        <th scope="col">secondContactPhone</th>
-        <th scope="col">status</th>
-        <th scope="col">bankLogo</th>
-        <th scope="col">City Name</th>
-        <th scope="col">Town Name</th>
+        <div class="col-md-9 mb-3">
+          <label for="validationServer02">New Address</label>
+          <input type="text" class="form-control is-valid" name="address" [(ngModel)]="address" placeholder="Last name" value="Otto"
+            required>
+        </div>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let bnk of bank;let i = index'>
-        <th scope="row">{{ i+1 }}</th>
-        <td>{{bnk.name}}</td>
-        <td>{{bnk.address}}</td>
-        <td>{{bnk.contactName}}</td>
-        <td>{{bnk.contactSurname}}</td>
-        <td>{{bnk.contactPhone}}</td>
-        <td>{{bnk.secondContactPhone}}</td>
-        <td>{{bnk.status}}</td>
-        <td>{{bnk.bankLogo}}</td>
-        <td>{{bnk?.city?.name}}</td>
-        <td>{{bnk?.town?.name}}</td>
+        <div class="col-md-9 mb-3">
+          <label for="validationServer02">New Contact Name</label>
+          <input type="text" class="form-control is-valid" name="contactName" [(ngModel)]="contactName" placeholder="Last name" value="Otto"
+            required>
+        </div>
+
+        <div class="col-md-9 mb-3">
+          <label for="validationServer02">New Contact Surname</label>
+          <input type="text" class="form-control is-valid" name="contactSurname" [(ngModel)]="contactSurname" placeholder="Last name"
+            value="Otto" required>
+        </div>
+
+        <div class="col-md-9 mb-3">
+          <label for="validationServer02">New Contact Phone</label>
+          <input type="text" class="form-control is-valid" name="contactPhone" [(ngModel)]="contactPhone" placeholder="Last name" value="Otto"
+            required>
+        </div>
+
+        <div class="col-md-9 mb-3">
+          <label for="validationServer02">New Second Contact Phone</label>
+          <input type="text" class="form-control is-valid" name="secondContactPhone" [(ngModel)]="secondContactPhone" placeholder="Last name"
+            value="Otto" required>
+        </div>
+        <div class="form-group image-upload col-md-9 mb-5 mt-5">
+          <img [src]="bankLogo" style="max-width:300px;max-height:300px"/>
+          <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)"/>
+      </div>
+        <div class="form-group col-md-9">
+            <label for="exampleFormControlSelect1">City Name</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option  *ngFor="let sec of bank" >{{sec?.city?.name}} </option><!--Deneme city -->
+            </select>
+          </div>
+          <div class="form-group col-md-9">
+              <label for="exampleFormControlSelect1">Town name</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                  <option  *ngFor="let sec of bank" >{{sec?.town?.name}}</option><!--Deneme town -->
+              </select>
+            </div>
+            <div class="form-group col-md-9">
+                <button class="btn btn-primary col-md-3  " type="submit" (click)="Create();">Ekle</button>
+            </div>
         
-        <!--
-        <td>{{bnk.town?bnk.town.name:''}}</td>
-        <td>{{bnk?.city?bnk.city.name:''}}</td>-->
-        <!--<td>{{kaf.address !="istanbul" ? kaf.address:'boş'}}</td>--> 
-      </tr>
-    </tbody>
-  </table>
-  <table style="width:500px;">
-      <tr><td>New city</td>
-        <td>
-          <select >
-            <option  *ngFor="let sec of bank" >{{sec?.city?.name}} </option><!--Deneme city -->
-          </select>
-        </td>
-      </tr>
-      <tr><td>New city</td>
-        <td>
-          <select >
-            <option  *ngFor="let sec of bank" >{{sec?.town?.name}}</option><!--Deneme town -->
-          </select>
-        </td>
-      </tr>
-    <tr>
-      <td>New name:</td>
-      <td><input type="text" name="name" [(ngModel)]="name"  ></td>
-    </tr>
-    <tr>
-      <td>New address:</td>
-      <td><input  type="text" name="address" [(ngModel)]="address"></td>
-    </tr>
-    <tr>
-      <td>New contactName:</td>
-      <td><input  type="text" name="contactName" [(ngModel)]="contactName"></td>
-    </tr>
-    <tr>
-      <td>New contactSurname:</td>
-      <td><input  type="text" name="contactSurname" [(ngModel)]="contactSurname"></td>
-    </tr>
-    <tr>
-      <td>New contactPhone:</td>
-      <td><input  type="text" name="contactPhone" [(ngModel)]="contactPhone"  ></td>
-    </tr>
-    <tr>
-      <td>New secondContactPhone:</td>
-      <td><input type="text" name="secondContactPhone" [(ngModel)]="secondContactPhone"></td>
-    </tr>
-    <tr>
-      <button (click)="Create();">add</button>
-    </tr>
-  </table>
-  
+      </form>
+    </div>
+    <div class="col-md-7">
+      <table class="table  table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">adres</th>
+            <th scope="col">contactName</th>
+            <th scope="col">contactSurname</th>
+            <th scope="col">contactPhone</th>
+            <th scope="col">secondContactPhone</th>
+            <th scope="col">status</th>
+            <th scope="col">bankLogo</th>
+            <th scope="col">City Name</th>
+            <th scope="col">Town Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let bnk of bank;let i = index'>
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{bnk.name}}</td>
+            <td>{{bnk.address}}</td>
+            <td>{{bnk.contactName}}</td>
+            <td>{{bnk.contactSurname}}</td>
+            <td>{{bnk.contactPhone}}</td>
+            <td>{{bnk.secondContactPhone}}</td>
+            <td>{{bnk.status}}</td>
+            <td>{{bnk.bankLogo?bnk.bankLogo:''}}</td>
+            <td>{{bnk?.city?.name}}</td>
+            <td>{{bnk?.town?.name}}</td>
+
+            <!--<td>{{bnk.town?bnk.town.name:''}}</td><td>{{bnk?.city?bnk.city.name:''}}</td>-->
+            <!--<td>{{kaf.address !="istanbul" ? kaf.address:'boş'}}</td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
