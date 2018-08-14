@@ -8,7 +8,7 @@ import { Observable } from '../../node_modules/rxjs/Observable';
 @Injectable()
 export class BankService {
   //private bankURL = 'http://localhost:4200/assets/dosya.json'; local api adresi
-  private bankURL = 'http://192.168.38.46:8081/api/banks';
+  private bankURL = 'http://example/api/banks';
   private handleError(operation = 'operation', result?: Bank[]) {
     return (error: any): Observable<Bank[]> => {
    
@@ -19,7 +19,7 @@ export class BankService {
     }
     httpOptions = {
         headers: new HttpHeaders({
-          'Authorization':'bearer 3d7a0733-9255-4f0f-b50b-a1d048541282',
+          'Authorization':'bearer example',
           'Access-Control-Allow-Origin':'*',
           'Access-Control-Allow-Methods':'*',
           'Access-Control-Allow-Headers':'*'
